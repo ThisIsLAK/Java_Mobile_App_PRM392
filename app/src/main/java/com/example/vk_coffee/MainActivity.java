@@ -1,18 +1,16 @@
 package com.example.vk_coffee;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.MenuItem;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.ArraySet;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +18,7 @@ import com.example.vk_coffee.adapter.CoffeeAdapter;
 import com.example.vk_coffee.db.AppDatabase;
 import com.example.vk_coffee.db.DatabaseClient;
 import com.example.vk_coffee.model.Coffee;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +28,9 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewCoffee;
-    private Button btnViewCart, btnShowMap;
-    //    private List<Coffee> coffeeList = new ArrayList<>();
     private List<Coffee> cart = new ArrayList<>();
     private CoffeeAdapter coffeeAdapter;
-
     private ActivityResultLauncher<Intent> cartLauncher;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerViewCoffee = findViewById(R.id.recyclerViewCoffee);
-        btnViewCart = findViewById(R.id.btnViewCart);
-        btnShowMap = findViewById(R.id.btnShowMap);
-
-//        ArrayList<Coffee> coffeeList = new ArrayList<>();
-//        coffeeList.add(new Coffee("Cà phê sữa", 30000, R.drawable.coffee_sua));
-//        coffeeList.add(new Coffee("Cà phê đen", 25000, R.drawable.coffee_den));
-//        coffeeList.add(new Coffee("Espresso", 30000, R.drawable.espresso));
-//        coffeeList.add(new Coffee("Cappuccino", 30000, R.drawable.cappuccino));
-//        coffeeList.add(new Coffee("Americano", 30000, R.drawable.americano));
 
         cartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -72,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         coffeeAdapter = new CoffeeAdapter(new ArrayList<>(), coffee -> {
             if (coffee.getQuantity() > 0 && !cart.contains(coffee)) {
                 cart.add(coffee);
-                Toast.makeText(MainActivity.this, "Da them mon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Đã thêm món", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,25 +67,40 @@ public class MainActivity extends AppCompatActivity {
 
         getCoffeeListFromDatabase();
 
-        btnViewCart.setOnClickListener(v -> {
-            com.example.vk_coffee.CartSingleton.getInstance().setCart(cart);
+        // === Xử lý FAB Menu ===
+        FloatingActionButton fabMenu = findViewById(R.id.fabMenu);
+        fabMenu.setOnClickListener(view -> {
+            PopupMenu popup = new PopupMenu(MainActivity.this, view);
+            popup.getMenuInflater().inflate(R.menu.main_menu, popup.getMenu());
 
-            Intent intent = new Intent(MainActivity.this, CartActivity.class);
-            cartLauncher.launch(intent);
-        });
+            popup.setOnMenuItemClickListener(item -> {
+                int id = item.getItemId();
 
-        btnShowMap.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MapActivity.class);
-            startActivity(intent);
-        });
+                if (id == R.id.menu_cart) {
+                    com.example.vk_coffee.CartSingleton.getInstance().setCart(cart);
+                    Intent cartIntent = new Intent(this, CartActivity.class);
+                    cartLauncher.launch(cartIntent);
+                    return true;
+                } else if (id == R.id.menu_history) {
+                    startActivity(new Intent(this, OrderHistoryActivity.class));
+                    return true;
+                } else if (id == R.id.menu_map) {
+                    startActivity(new Intent(this, MapActivity.class));
+                    return true;
+                } else if (id == R.id.menu_logout) {
+                    getSharedPreferences("user_prefs", MODE_PRIVATE).edit().clear().apply();
+                    Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, LoginActivity.class));
+                    finish();
+                    return true;
+                }
 
-        Button btnOrderHistory = findViewById(R.id.btnOrderHistory);
-        btnOrderHistory.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, OrderHistoryActivity.class);
-            startActivity(intent);
+                return false;
+            });
+
+            popup.show();
         });
     }
-
 
     private void getCoffeeListFromDatabase() {
         AppDatabase db = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase();
@@ -107,11 +108,7 @@ public class MainActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             List<Coffee> coffees = db.coffeeDao().getAllCoffees();
-
-            // runOnUiThread dùng để đảm bảo rằng cập nhật giao diện (RecyclerView) sẽ diễn ra trên luồng chính.
-            runOnUiThread(() -> {
-                coffeeAdapter.updateCoffeeList(coffees);
-            });
+            runOnUiThread(() -> coffeeAdapter.updateCoffeeList(coffees));
         });
     }
 
@@ -120,12 +117,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Intent intent = getIntent();
         if (intent != null && "oke".equals(intent.getStringExtra("paymentResult"))) {
-            Toast.makeText(this, "Thanh toan thanh cong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
             intent.removeExtra("paymentResult");
         }
     }
-
-
-
 }
-

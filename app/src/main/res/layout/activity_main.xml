@@ -1,66 +1,117 @@
-<LinearLayout
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="#D6C0B3">-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imgBanner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="180dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/banner_coffee_shop" />-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recyclerViewCoffee"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:layout_margin="10dp"/>-->
+
+<!--&lt;!&ndash;    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/btnShowMap"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:elevation="6dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Xem Vị Trí Cửa Hàng"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/btnViewCart"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:elevation="6dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Xem Giỏ Hàng"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/btnOrderHistory"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:elevation="6dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textStyle="bold"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Lịch sử đặt hàng" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/btnLogout"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:text="Đăng xuất"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:textStyle="bold" />&ndash;&gt;-->
+
+
+
+<!--</LinearLayout>-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#D6C0B3">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imgBanner"
+    <!-- Nội dung cũ -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginBottom="10dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner_coffee_shop" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#D6C0B3">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCoffee"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="16dp"
-        android:layout_margin="10dp"/>
+        <ImageView
+            android:id="@+id/imgBanner"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner_coffee_shop" />
 
-    <Button
-        android:id="@+id/btnShowMap"
-        android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCoffee"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp" />
+    </LinearLayout>
+
+    <!-- ✅ Nút menu hình tròn -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMenu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_button"
-        android:elevation="6dp"
-        android:padding="8dp"
-        android:text="Xem Vị Trí Cửa Hàng"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnViewCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/rounded_button"
-        android:elevation="6dp"
-        android:padding="8dp"
-        android:text="Xem Giỏ Hàng"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnOrderHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/rounded_button"
-        android:elevation="6dp"
-        android:padding="8dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:text="Lịch sử đặt hàng" />
-
-
-
-
-</LinearLayout>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_launcher_foreground"
+    android:contentDescription="Menu"
+    android:tint="@android:color/white"
+    android:backgroundTint="@color/design_default_color_primary" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
