@@ -1,0 +1,66 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#D6C0B3">
+
+    <ImageView
+        android:id="@+id/imgBanner"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner_coffee_shop" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCoffee"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/btnShowMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="6dp"
+        android:padding="8dp"
+        android:text="Xem Vị Trí Cửa Hàng"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnViewCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="6dp"
+        android:padding="8dp"
+        android:text="Xem Giỏ Hàng"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnOrderHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="6dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:text="Lịch sử đặt hàng" />
+
+
+
+
+</LinearLayout>

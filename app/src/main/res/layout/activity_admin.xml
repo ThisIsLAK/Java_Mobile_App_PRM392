@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#D6C0B3">
+
+
+    <Button
+        android:id="@+id/btnAddCoffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/brown"
+        android:text="Thêm Coffee"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnViewDashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/brown"
+        android:text="Xem Dashboard"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCoffeeAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
+
+
+
+</LinearLayout>

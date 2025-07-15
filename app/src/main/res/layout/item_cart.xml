@@ -1,0 +1,76 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="0dp"
+    android:layout_marginBottom="10dp"
+    android:elevation="4dp"
+    android:background="@drawable/rounded_corner">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgCoffee"
+            android:layout_width="152dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner"
+            android:clipToOutline="true" />
+
+        <LinearLayout
+            android:layout_width="141dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtCoffeeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtCoffeePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnRemoveFromCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/brown"
+        android:text="Bỏ chọn món"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

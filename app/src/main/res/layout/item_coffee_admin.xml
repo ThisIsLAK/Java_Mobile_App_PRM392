@@ -1,0 +1,51 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:layout_marginBottom="2dp"
+    android:background="#D6C0B3">
+
+    <TextView
+        android:id="@+id/txtCoffeeNameAdmin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Tên Coffee"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCoffeePriceAdmin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Giá"
+        android:textSize="16sp" />
+
+
+    <Button
+        android:id="@+id/btnEditCoffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/brown"
+        android:text="Sửa"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnDeleteCoffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/brown"
+        android:text="Xóa"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
+</LinearLayout>

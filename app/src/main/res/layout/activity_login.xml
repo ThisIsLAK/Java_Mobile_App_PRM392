@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/coffee_background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Logo Coffee"
+        android:src="@drawable/logo_coffee" />
+
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/brown"
+        android:hint="Username"
+        android:padding="12dp"
+        android:textColor="#000"
+        android:textColorHint="#A1887F" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/brown"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColor="#000"
+        android:textColorHint="#A1887F" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/brown"
+        android:padding="16dp"
+        android:text="Đăng nhập"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="16dp"
+        android:text="Chưa có tài khoản? Đăng ký"
+        android:textColor="@android:color/holo_blue_dark" />
+</LinearLayout>
