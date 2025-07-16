@@ -47,7 +47,7 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(fileTree(mapOf(
-        "dir" to "D:\\All Coding Projects\\ZaloPayArr",
+        "dir" to "D:\\FPT\\PRM_GrPRJ\\vk_coffee\\vk_coffee",
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
