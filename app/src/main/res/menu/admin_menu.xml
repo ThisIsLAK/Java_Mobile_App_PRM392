@@ -1,5 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_add_coffee" android:title="Thêm món mới" />
-    <item android:id="@+id/menu_dashboard" android:title="Thống kê" />
-    <item android:id="@+id/menu_logout" android:title="Đăng xuất" />
+    <item
+        android:id="@+id/menu_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard"/>
+    <item
+        android:id="@+id/menu_add_coffee"
+        android:title="Tạo Cafe"
+        android:icon="@drawable/ic_add"/>
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Đăng xuất"
+        android:icon="@drawable/ic_logout"/>
 </menu>

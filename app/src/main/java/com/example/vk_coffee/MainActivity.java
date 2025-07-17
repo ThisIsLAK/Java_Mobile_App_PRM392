@@ -1,16 +1,12 @@
 package com.example.vk_coffee;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,12 +14,17 @@ import com.example.vk_coffee.adapter.CoffeeAdapter;
 import com.example.vk_coffee.db.AppDatabase;
 import com.example.vk_coffee.db.DatabaseClient;
 import com.example.vk_coffee.model.Coffee;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,39 +68,48 @@ public class MainActivity extends AppCompatActivity {
 
         getCoffeeListFromDatabase();
 
-        // === Xử lý FAB Menu ===
-        FloatingActionButton fabMenu = findViewById(R.id.fabMenu);
-        fabMenu.setOnClickListener(view -> {
-            PopupMenu popup = new PopupMenu(MainActivity.this, view);
-            popup.getMenuInflater().inflate(R.menu.main_menu, popup.getMenu());
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-            popup.setOnMenuItemClickListener(item -> {
-                int id = item.getItemId();
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
 
-                if (id == R.id.menu_cart) {
-                    com.example.vk_coffee.CartSingleton.getInstance().setCart(cart);
-                    Intent cartIntent = new Intent(this, CartActivity.class);
-                    cartLauncher.launch(cartIntent);
-                    return true;
-                } else if (id == R.id.menu_history) {
-                    startActivity(new Intent(this, OrderHistoryActivity.class));
-                    return true;
-                } else if (id == R.id.menu_map) {
-                    startActivity(new Intent(this, MapActivity.class));
-                    return true;
-                } else if (id == R.id.menu_logout) {
-                    getSharedPreferences("user_prefs", MODE_PRIVATE).edit().clear().apply();
-                    Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, LoginActivity.class));
-                    finish();
-                    return true;
-                }
-
-                return false;
-            });
-
-            popup.show();
+            if (id == R.id.nav_cart) {
+                com.example.vk_coffee.CartSingleton.getInstance().setCart(cart);
+                Intent cartIntent = new Intent(this, CartActivity.class);
+                cartLauncher.launch(cartIntent);
+                return true;
+            } else if (id == R.id.nav_history) {
+                startActivity(new Intent(this, OrderHistoryActivity.class));
+                return true;
+            } else if (id == R.id.nav_map) {
+                startActivity(new Intent(this, MapActivity.class));
+                return true;
+            } else if (id == R.id.nav_logout) {
+                getSharedPreferences("user_prefs", MODE_PRIVATE).edit().clear().apply();
+                Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+                return true;
+            }
+            return false;
         });
+
+        EditText searchEditText = findViewById(R.id.searchEditText);
+
+// Gọi sau khi đã getCoffeeListFromDatabase() và gán coffeeAdapter
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterCoffeeList(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
     }
 
     private void getCoffeeListFromDatabase() {
@@ -108,9 +118,26 @@ public class MainActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             List<Coffee> coffees = db.coffeeDao().getAllCoffees();
-            runOnUiThread(() -> coffeeAdapter.updateCoffeeList(coffees));
+            runOnUiThread(() -> {
+                allCoffees.clear();
+                allCoffees.addAll(coffees);
+                coffeeAdapter.updateCoffeeList(coffees);
+            });
         });
     }
+
+    private List<Coffee> allCoffees = new ArrayList<>(); // Lưu toàn bộ danh sách gốc
+
+    private void filterCoffeeList(String query) {
+        List<Coffee> filteredList = new ArrayList<>();
+        for (Coffee coffee : allCoffees) {
+            if (coffee.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(coffee);
+            }
+        }
+        coffeeAdapter.updateCoffeeList(filteredList);
+    }
+
 
     @Override
     protected void onResume() {

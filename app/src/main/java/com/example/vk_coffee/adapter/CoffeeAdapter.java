@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,32 +41,46 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
         holder.txtCoffeeName.setText(coffee.getName());
         holder.txtCoffeePrice.setText(coffee.getPrice() + " VND");
 
-        // Load dynamic image
+        // Load ảnh
         if (coffee.getImage() != null) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(coffee.getImage(), 0, coffee.getImage().length);
             holder.imageCoffee.setImageBitmap(bitmap);
         } else {
-            holder.imageCoffee.setImageResource(R.drawable.coffee_sua); // Optional placeholder
+            holder.imageCoffee.setImageResource(R.drawable.espresso);
         }
 
-        holder.numberPickerQuantity.setMinValue(0);
-        holder.numberPickerQuantity.setMaxValue(5);
-        holder.numberPickerQuantity.setOnValueChangedListener((picker, oldVal, newVal) -> coffee.setQuantity(newVal));
+        // ✅ Hiển thị số lượng hiện tại
+        holder.tvQuantity.setText(String.valueOf(coffee.getQuantity()));
 
+        // ✅ Xử lý tăng số lượng
+        holder.btnIncrease.setOnClickListener(v -> {
+            int quantity = coffee.getQuantity() + 1;
+            coffee.setQuantity(quantity);
+            holder.tvQuantity.setText(String.valueOf(quantity));
+        });
+
+        // ✅ Xử lý giảm số lượng
+        holder.btnDecrease.setOnClickListener(v -> {
+            int quantity = coffee.getQuantity();
+            if (quantity > 0) {
+                quantity--;
+                coffee.setQuantity(quantity);
+                holder.tvQuantity.setText(String.valueOf(quantity));
+            }
+        });
+
+        // ✅ Thêm vào giỏ
         holder.btnAddToCart.setOnClickListener(v -> {
-            if (onAddToCartListener != null) {
+            if (onAddToCartListener != null && coffee.getQuantity() > 0) {
                 onAddToCartListener.onAddToCart(coffee);
             }
         });
     }
 
-
-
     @Override
     public int getItemCount() {
         return coffeeList.size();
     }
-
 
     public void updateCoffeeList(List<Coffee> newCoffeeList) {
         this.coffeeList.clear();
@@ -78,25 +90,22 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
 
     public static class CoffeeViewHolder extends RecyclerView.ViewHolder {
         ImageView imageCoffee;
-        TextView txtCoffeeName, txtCoffeePrice;
-        NumberPicker numberPickerQuantity;
-        Button btnAddToCart;
+        TextView txtCoffeeName, txtCoffeePrice, tvQuantity;
+        Button btnIncrease, btnDecrease, btnAddToCart;
 
         public CoffeeViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageCoffee = itemView.findViewById(R.id.imgCoffee); // Make sure this matches your XML ID
-            txtCoffeeName = itemView.findViewById(R.id.txtCoffeeName);
+            imageCoffee = itemView.findViewById(R.id.coffeeImage);
+            txtCoffeeName = itemView.findViewById(R.id.coffeeName);
             txtCoffeePrice = itemView.findViewById(R.id.txtCoffeePrice);
-            numberPickerQuantity = itemView.findViewById(R.id.numberPickerQuantity);
+            tvQuantity = itemView.findViewById(R.id.tvQuantity);
+            btnIncrease = itemView.findViewById(R.id.btnIncrease);
+            btnDecrease = itemView.findViewById(R.id.btnDecrease);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
         }
     }
-
 
     public interface OnAddToCartListener {
         void onAddToCart(Coffee coffee);
     }
 }
-
-
-

@@ -47,7 +47,7 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(fileTree(mapOf(
-        "dir" to "D:\\FPT\\PRM_GrPRJ\\vk_coffee\\vk_coffee",
+        "dir" to "D:\\All Coding Projects\\ZaloPayArr",
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
@@ -61,6 +61,7 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.8.9")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.google.android.material:material:1.12.0")
 
     val room_version = "2.5.0"
     implementation("androidx.room:room-runtime:$room_version")
