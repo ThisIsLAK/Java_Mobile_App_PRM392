@@ -73,33 +73,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
-<<<<<<< HEAD
-                if (id == R.id.menu_cart) {
-                    com.example.vk_coffee.model.CartSingleton.getInstance().setCart(cart);
-                    Intent cartIntent = new Intent(this, CartActivity.class);
-                    cartLauncher.launch(cartIntent);
-                    return true;
-                } else if (id == R.id.menu_history) {
-                    startActivity(new Intent(this, OrderHistoryActivity.class));
-                    return true;
-                } else if (id == R.id.menu_map) {
-                    startActivity(new Intent(this, MapActivity.class));
-                    return true;
-                } else if (id == R.id.menu_logout) {
-                    getSharedPreferences("user_prefs", MODE_PRIVATE).edit().clear().apply();
-                    Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, LoginActivity.class));
-                    finish();
-                    return true;
-                }
-
-                return false;
-            });
-
-            popup.show();
-=======
             if (id == R.id.nav_cart) {
-                com.example.vk_coffee.CartSingleton.getInstance().setCart(cart);
+                com.example.vk_coffee.model.CartSingleton.getInstance().setCart(cart);
                 Intent cartIntent = new Intent(this, CartActivity.class);
                 cartLauncher.launch(cartIntent);
                 return true;
@@ -117,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             return false;
->>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8
         });
 
         EditText searchEditText = findViewById(R.id.searchEditText);
