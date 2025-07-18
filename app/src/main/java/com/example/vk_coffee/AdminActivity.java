@@ -62,38 +62,6 @@ public class AdminActivity extends AppCompatActivity {
                     }
                 });
 
-<<<<<<< HEAD
-        // FAB popup menu
-        FloatingActionButton fabAdminMenu = findViewById(R.id.fabAdminMenu);
-        fabAdminMenu.setOnClickListener(view -> {
-            PopupMenu popup = new PopupMenu(AdminActivity.this, view);
-            popup.getMenuInflater().inflate(R.menu.admin_menu, popup.getMenu());
-
-            popup.setOnMenuItemClickListener(item -> {
-                int id = item.getItemId();
-                if (id == R.id.menu_add_coffee) {
-                    Intent intent = new Intent(AdminActivity.this, AddEditCoffeeActivity.class);
-                    addCoffeeLauncher.launch(intent);
-                    return true;
-                } else if (id == R.id.menu_order_history) {
-                    startActivity(new Intent(AdminActivity.this, AdminOrderHistoryActivity.class));
-                    return true;
-                } else if (id == R.id.menu_dashboard) {
-                    startActivity(new Intent(AdminActivity.this, DashboardActivity.class));
-                    return true;
-                } else if (id == R.id.menu_logout) {
-                    SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
-                    prefs.edit().clear().apply();
-                    Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, LoginActivity.class));
-                    finish();
-                    return true;
-                }
-                return false;
-            });
-
-            popup.show();
-=======
         // ✅ Xử lý BottomNavigationView thay cho FAB
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavAdmin);
         bottomNav.setOnItemSelectedListener(item -> {
@@ -101,6 +69,9 @@ public class AdminActivity extends AppCompatActivity {
             if (id == R.id.menu_add_coffee) {
                 Intent intent = new Intent(AdminActivity.this, AddEditCoffeeActivity.class);
                 addCoffeeLauncher.launch(intent);
+                return true;
+            } else if (id == R.id.menu_history) {
+                startActivity(new Intent(this, OrderHistoryActivity.class));
                 return true;
             } else if (id == R.id.menu_dashboard) {
                 startActivity(new Intent(AdminActivity.this, DashboardActivity.class));
@@ -114,7 +85,6 @@ public class AdminActivity extends AppCompatActivity {
                 return true;
             }
             return false;
->>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8
         });
     }
 

@@ -109,8 +109,4 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
         void onAddToCart(Coffee coffee);
     }
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8

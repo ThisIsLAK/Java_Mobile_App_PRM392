@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lịch sử đặt hàng"
+        android:text="Lịch sử đặt hàng Admin"
         android:textSize="18sp"
         android:textStyle="bold"
         android:padding="8dp"/>
