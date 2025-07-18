@@ -41,6 +41,8 @@
 
         <activity
             android:name=".DashboardActivity" />
+        <activity
+            android:name=".ReviewActivity" />
 
         <activity
             android:name=".CartActivity"
