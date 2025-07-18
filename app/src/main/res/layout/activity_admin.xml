@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/adminRoot"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D6C0B3">
@@ -24,14 +25,15 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
     </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdminMenu"
-        android:layout_width="wrap_content"
+
+    <!-- Thay FAB bằng BottomNavigationView -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavAdmin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:contentDescription="Menu quản lý"
-        android:tint="@android:color/white"
-        android:backgroundTint="@color/design_default_color_primary"/>
+        android:layout_gravity="bottom"
+        app:menu="@menu/admin_menu"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        android:background="@color/white"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

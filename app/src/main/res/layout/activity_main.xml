@@ -1,113 +1,124 @@
-<!--<LinearLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:orientation="vertical"-->
-<!--    android:background="#D6C0B3">-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imgBanner"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="180dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/banner_coffee_shop" />-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerViewCoffee"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:layout_margin="10dp"/>-->
-
-<!--&lt;!&ndash;    <Button&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/btnShowMap"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_marginTop="8dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:elevation="6dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:text="Xem Vị Trí Cửa Hàng"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textStyle="bold" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <Button&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/btnViewCart"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_marginTop="0dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:elevation="6dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:text="Xem Giỏ Hàng"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textStyle="bold" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <Button&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/btnOrderHistory"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_marginTop="0dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:elevation="6dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:padding="8dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textStyle="bold"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:text="Lịch sử đặt hàng" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <Button&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/btnLogout"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:background="@drawable/rounded_button"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:text="Đăng xuất"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textColor="@android:color/white"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textSize="16sp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textStyle="bold" />&ndash;&gt;-->
-
-
-
-<!--</LinearLayout>-->
-
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rootLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
 
-    <!-- Nội dung cũ -->
-    <LinearLayout
+    <!-- ✅ Nội dung cuộn -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#D6C0B3">
+        android:layout_above="@id/bottomNavigationView"
+        android:paddingBottom="70dp"
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/imgBanner"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/banner_coffee_shop" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCoffee"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp" />
-    </LinearLayout>
+            <!-- ✅ Hero Section với thanh Search -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/hero_gradient"
+                android:padding="24dp">
 
-    <!-- ✅ Nút menu hình tròn -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabMenu"
-        android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/heroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:text="Leblanc"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/heroSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heroTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="Thưởng thức hương vị cà phê tuyệt vời"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:alpha="0.9" />
+
+                <!-- ✅ Search Bar -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="24dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_search"
+                            android:layout_marginEnd="12dp"
+                            android:alpha="0.6" />
+
+                        <EditText
+                            android:id="@+id/searchEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:hint="Tìm kiếm cà phê..."
+                            android:textSize="14sp"
+                            android:textColorHint="@color/text_secondary"
+                            android:inputType="text" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <!-- ✅ Danh sách cà phê -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Menu Cà Phê"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCoffee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ✅ Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_launcher_foreground"
@@ -115,3 +126,11 @@
         android:tint="@android:color/white"
         android:backgroundTint="@color/design_default_color_primary" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+=======
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+>>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8

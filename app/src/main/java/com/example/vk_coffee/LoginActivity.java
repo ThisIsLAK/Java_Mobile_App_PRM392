@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
                             prefs.edit().putString("username", username).apply();
 
-                            Toast.makeText(LoginActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Chào mừng đến với LeBlanc", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
                             prefs.edit().putString("username", username).apply();
 
-                            Toast.makeText(LoginActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Chào mừng admin", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                             startActivity(intent);
                             finish();

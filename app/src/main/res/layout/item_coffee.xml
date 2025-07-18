@@ -1,61 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+>>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="0dp"
-    android:layout_marginBottom="10dp"
-    android:elevation="4dp"
-    android:background="@drawable/rounded_corner">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
 
+        <!-- Hình ảnh cà phê -->
         <ImageView
-            android:id="@+id/imgCoffee"
-            android:layout_width="152dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
+            android:id="@+id/coffeeImage"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:scaleType="centerCrop"
-            android:background="@drawable/rounded_corner"
-            android:clipToOutline="true" />
+            android:background="@color/coffee_light"
+            android:layout_marginBottom="8dp" />
 
-        <LinearLayout
-            android:layout_width="141dp"
+        <!-- Tên cà phê -->
+        <TextView
+            android:id="@+id/coffeeName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:text="Tên cà phê"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="4dp" />
 
-            <TextView
-                android:id="@+id/txtCoffeeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+        <!-- Mô tả -->
+        <TextView
+            android:id="@+id/coffeeDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mô tả ngắn gọn"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Giá + Tăng giảm số lượng + Thêm giỏ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/txtCoffeePrice"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:layout_weight="1"
+                android:text="25.000₫"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/coffee_dark" />
+
+            <!-- ✅ Nút giảm -->
+            <Button
+                android:id="@+id/btnDecrease"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:text="-"
+                android:textSize="16sp"
+                android:backgroundTint="@color/brown"
+                android:textColor="@android:color/white"
+                android:minHeight="0dp"
+                android:padding="0dp" />
+
+            <!-- ✅ Hiển thị số lượng -->
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="4dp" />
+
+            <!-- ✅ Nút tăng -->
+            <Button
+                android:id="@+id/btnIncrease"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:text="+"
+                android:textSize="16sp"
+                android:backgroundTint="@color/brown"
+                android:textColor="@android:color/white"
+                android:minHeight="0dp"
+                android:padding="0dp" />
+
+            <Button
+                android:id="@+id/btnAddToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Thêm"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/brown"
+                android:paddingHorizontal="12dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="8dp" />
+
         </LinearLayout>
 
-        <NumberPicker
-            android:id="@+id/numberPickerQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="20dp"/>
     </LinearLayout>
+<<<<<<< HEAD
 
     <Button
         android:id="@+id/btnAddToCart"
@@ -69,3 +132,6 @@
         android:textSize="13sp"
         android:textStyle="bold" />
 </LinearLayout>
+=======
+</androidx.cardview.widget.CardView>
+>>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8

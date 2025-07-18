@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    android:padding="16dp">
 
+    <!-- Tiêu đề -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Lịch sử đặt hàng"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="12dp" />
 
+    <!-- Danh sách đơn hàng -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOrders"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOrderHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+=======
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp" />
+>>>>>>> a06d033fc31a13b53381f2bc972e5ce71a93dba8
 </LinearLayout>

@@ -51,7 +51,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
             holder.imgCoffee.setImageBitmap(bitmap);
         } else {
-            holder.imgCoffee.setImageResource(R.drawable.coffee_muoi); // Sử dụng ảnh mặc định nếu không có ảnh
+            holder.imgCoffee.setImageResource(R.drawable.espresso); // Sử dụng ảnh mặc định nếu không có ảnh
         }
 
         holder.btnRemoveFromCart.setOnClickListener(v -> {
