@@ -99,4 +99,3 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
 }
 
 
-

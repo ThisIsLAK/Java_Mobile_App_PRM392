@@ -40,7 +40,7 @@ public class CartActivity extends AppCompatActivity {
         txtTotalPrice = findViewById(R.id.txtTotalPrice);
         btnCheckout = findViewById(R.id.btnCheckout);
 
-        cart = com.example.vk_coffee.CartSingleton.getInstance().getCart();
+        cart = com.example.vk_coffee.model.CartSingleton.getInstance().getCart();
         recyclerViewCart.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCart.setAdapter(new CartAdapter(cart, this::removeItemFromCart));
 

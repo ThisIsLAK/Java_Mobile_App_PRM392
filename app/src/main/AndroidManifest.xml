@@ -35,6 +35,9 @@
         <activity
             android:name=".AdminActivity"
             android:exported="true" />
+        <activity
+            android:name=".AdminOrderHistoryActivity"
+            android:exported="true" />
 
         <activity
             android:name=".OrderHistoryActivity" />

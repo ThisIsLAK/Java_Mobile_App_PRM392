@@ -1,4 +1,4 @@
-package com.example.vk_coffee;
+package com.example.vk_coffee.model;
 
 import com.example.vk_coffee.model.Coffee;
 

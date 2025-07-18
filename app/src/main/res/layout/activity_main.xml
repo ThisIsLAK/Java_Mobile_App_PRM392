@@ -111,7 +111,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_launcher_foreground"
-    android:contentDescription="Menu"
-    android:tint="@android:color/white"
-    android:backgroundTint="@color/design_default_color_primary" />
+        android:contentDescription="Menu"
+        android:tint="@android:color/white"
+        android:backgroundTint="@color/design_default_color_primary" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

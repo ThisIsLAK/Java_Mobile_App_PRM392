@@ -1,5 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_add_coffee" android:title="Thêm món mới" />
     <item android:id="@+id/menu_dashboard" android:title="Thống kê" />
+    <item android:id="@+id/menu_order_history" android:title="Xem lịch sử đặt hàng"/>
     <item android:id="@+id/menu_logout" android:title="Đăng xuất" />
 </menu>

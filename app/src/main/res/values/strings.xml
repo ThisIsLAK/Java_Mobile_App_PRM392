@@ -9,4 +9,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="label_user">User:</string>
+    <string name="label_date">Ngày đặt:</string>
+    <string name="label_items">Món đã chọn:</string>
+    <string name="label_total">Tổng tiền:</string>
 </resources>

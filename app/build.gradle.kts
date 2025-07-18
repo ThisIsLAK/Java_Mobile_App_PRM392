@@ -47,7 +47,7 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(fileTree(mapOf(
-        "dir" to "D:\\All Coding Projects\\ZaloPayArr",
+        "dir" to "D:\\ASMPRM\\Java_Mobile_App_PRM392",
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))

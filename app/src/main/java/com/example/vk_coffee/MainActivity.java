@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.menu_cart) {
-                    com.example.vk_coffee.CartSingleton.getInstance().setCart(cart);
+                    com.example.vk_coffee.model.CartSingleton.getInstance().setCart(cart);
                     Intent cartIntent = new Intent(this, CartActivity.class);
                     cartLauncher.launch(cartIntent);
                     return true;
