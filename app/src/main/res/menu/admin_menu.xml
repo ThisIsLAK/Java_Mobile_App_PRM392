@@ -5,6 +5,10 @@
         android:title="Dashboard"
         android:icon="@drawable/ic_dashboard"/>
     <item
+        android:id="@+id/menu_admin_history"
+        android:title="History"
+        android:icon="@drawable/ic_history"/>
+    <item
         android:id="@+id/menu_add_coffee"
         android:title="Tạo Cafe"
         android:icon="@drawable/ic_add"/>

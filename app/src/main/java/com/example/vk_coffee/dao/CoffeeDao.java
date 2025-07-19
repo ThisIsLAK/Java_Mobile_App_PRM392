@@ -25,6 +25,7 @@ public interface CoffeeDao {
     @Query("SELECT * FROM coffee_table")
     List<Coffee> getAllCoffees();
 
+
     @Query("SELECT * FROM coffee_table WHERE id = :id")
     Coffee getCoffeeById(int id);
 }

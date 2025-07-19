@@ -39,7 +39,7 @@ public class AdminOrderHistoryActivity extends AppCompatActivity {
     private void loadAllOrdersForAdmin() {
         Executors.newSingleThreadExecutor().execute(() -> {
             List<Order> orders = db.orderDao().getAllOrders();
-            runOnUiThread(() -> adapter.updateOrders(orders));
+            adapter.updateOrders(orders);
         });
     }
 }

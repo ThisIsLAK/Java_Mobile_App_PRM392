@@ -70,8 +70,8 @@ public class AdminActivity extends AppCompatActivity {
                 Intent intent = new Intent(AdminActivity.this, AddEditCoffeeActivity.class);
                 addCoffeeLauncher.launch(intent);
                 return true;
-            } else if (id == R.id.menu_history) {
-                startActivity(new Intent(this, OrderHistoryActivity.class));
+            } else if (id == R.id.menu_admin_history) {
+                startActivity(new Intent(this, AdminOrderHistoryActivity.class));
                 return true;
             } else if (id == R.id.menu_dashboard) {
                 startActivity(new Intent(AdminActivity.this, DashboardActivity.class));
