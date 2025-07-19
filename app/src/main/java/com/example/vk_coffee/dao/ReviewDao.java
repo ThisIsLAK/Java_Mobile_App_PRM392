@@ -6,6 +6,8 @@ import androidx.room.Query;
 
 import com.example.vk_coffee.model.Review;
 
+import java.util.List;
+
 @Dao
 public interface ReviewDao {
     @Insert
@@ -13,6 +15,9 @@ public interface ReviewDao {
 
     @Query("SELECT * FROM Review WHERE orderId = :orderId LIMIT 1")
     Review getReviewByOrderId(int orderId);
+
+    @Query("SELECT * FROM review")
+    List<Review> getAllReviews();
 }
 
 

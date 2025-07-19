@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:background="#EFE5DC">
 
-    <!-- Tiêu đề Dashboard -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="📊 Thống kê doanh số"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#5D4037"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="sans-serif-medium" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Tổng số ly -->
-    <TextView
-        android:id="@+id/tvTotalCups"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tổng số ly: 0"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#3E2723"
-        android:gravity="center"
-        android:background="#D7CCC8"
-        android:padding="10dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="sans-serif-medium"
-        android:elevation="3dp"
-        android:layout_marginHorizontal="20dp"
-        android:backgroundTintMode="src_over"
-        android:clipToOutline="true"
-        android:outlineProvider="background" />
+        <!-- Tiêu đề Dashboard -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📊 Thống kê doanh số"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#5D4037"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium" />
 
-    <!-- Biểu đồ tròn -->
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="20dp"
-        android:background="#FFFFFF"
-        android:elevation="4dp"
-        android:padding="8dp"
-        android:clipToOutline="true"
-        android:outlineProvider="background" />
+        <!-- Tổng số ly -->
+        <TextView
+            android:id="@+id/tvTotalCups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tổng số ly: 0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#3E2723"
+            android:gravity="center"
+            android:background="#D7CCC8"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:elevation="3dp"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTintMode="src_over"
+            android:clipToOutline="true"
+            android:outlineProvider="background" />
 
-    <!-- Biểu đồ cột -->
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#FFFFFF"
-        android:elevation="4dp"
-        android:padding="8dp"
-        android:clipToOutline="true"
-        android:outlineProvider="background" />
+        <!-- Biểu đồ tròn -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="8dp"
+            android:clipToOutline="true"
+            android:outlineProvider="background" />
 
-</LinearLayout>
+        <!-- Biểu đồ cột -->
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="8dp"
+            android:clipToOutline="true"
+            android:outlineProvider="background" />
+
+        <!-- Thống kê review -->
+        <TextView
+            android:id="@+id/tvReviewStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đang tải thống kê review..."
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="#4E342E"
+            android:layout_marginTop="20dp"
+            android:background="#FFECB3"
+            android:gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>

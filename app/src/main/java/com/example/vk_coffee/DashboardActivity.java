@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.vk_coffee.db.AppDatabase;
 import com.example.vk_coffee.db.DatabaseClient;
 import com.example.vk_coffee.model.Order;
+import com.example.vk_coffee.model.Review;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
@@ -33,6 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
     private PieChart pieChart;
     private BarChart barChart;
     private TextView tvTotalCups;
+    private TextView tvReviewStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,12 @@ public class DashboardActivity extends AppCompatActivity {
         pieChart = findViewById(R.id.pieChart);
         barChart = findViewById(R.id.barChart);
         tvTotalCups = findViewById(R.id.tvTotalCups);
+        tvReviewStats = findViewById(R.id.tvReviewStats);
+
 
         loadDashboardData();
+        loadReviewStatistics();
+
     }
 
     private void loadDashboardData() {
@@ -99,6 +105,24 @@ public class DashboardActivity extends AppCompatActivity {
                 // ✅ Tổng số ly
                 tvTotalCups.setText("Tổng số ly: " + totalCups);
             });
+        });
+    }
+
+    private void loadReviewStatistics() {
+        AppDatabase db = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase();
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            List<Review> reviews = db.reviewDao().getAllReviews();
+            float avgRating = 0;
+            if (!reviews.isEmpty()) {
+                float total = 0;
+                for (Review r : reviews) total += r.getRating();
+                avgRating = total / reviews.size();
+            }
+            String stats = "Tổng số đánh giá: " + reviews.size() + "\n"
+                    + "Điểm trung bình: " + String.format("%.1f", avgRating);
+
+            runOnUiThread(() -> tvReviewStats.setText(stats));
         });
     }
 
