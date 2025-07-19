@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0" />
+
+        <EditText
+            android:id="@+id/editTextMessage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Nhập nội dung đánh giá"
+            android:gravity="top"
+            android:background="@android:drawable/edit_text"/>
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonUploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chọn ảnh từ máy" />
+
+        <Button
+            android:id="@+id/buttonSubmitReview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng review" />
+    </LinearLayout>
+</ScrollView>

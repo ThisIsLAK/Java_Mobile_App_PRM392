@@ -11,12 +11,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.vk_coffee.dao.CoffeeDao;
 import com.example.vk_coffee.dao.OrderDao;
+import com.example.vk_coffee.dao.ReviewDao;
 import com.example.vk_coffee.dao.UserDao;
 import com.example.vk_coffee.model.Coffee;
 import com.example.vk_coffee.model.Order;
+import com.example.vk_coffee.model.Review;
 import com.example.vk_coffee.model.User;
 
-@Database(entities = {User.class, Coffee.class, Order.class}, version = 6, exportSchema = false)
+@Database(entities = {User.class, Coffee.class, Order.class, Review.class}, version = 6, exportSchema = false)
 // 👉 Tăng version lên 6 để Room reset lại hash schema
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -25,6 +27,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract CoffeeDao coffeeDao();
     public abstract OrderDao orderDao();
+    public abstract ReviewDao reviewDao();
+
 
     // ✅ Singleton để tránh tạo nhiều instance của Room
     public static AppDatabase getInstance(Context context) {
@@ -63,6 +67,14 @@ public abstract class AppDatabase extends RoomDatabase {
 
             // Đổi tên bảng mới thành tên bảng cũ
             database.execSQL("ALTER TABLE coffee_table_new RENAME TO coffee_table");
+
+            database.execSQL("CREATE TABLE IF NOT EXISTS `review_table` (" +
+                    "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                    "`userId` INTEGER NOT NULL, " +
+                    "`orderId` INTEGER NOT NULL, " +
+                    "`rating` INTEGER NOT NULL, " +
+                    "`message` TEXT, " +
+                    "`imagePath` TEXT)");
         }
     };
 }

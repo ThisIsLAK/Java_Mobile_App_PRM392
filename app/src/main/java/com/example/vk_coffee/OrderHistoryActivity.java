@@ -1,5 +1,6 @@
 package com.example.vk_coffee;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -71,6 +72,19 @@ public class OrderHistoryActivity extends AppCompatActivity {
             holder.txtOrderTotal.setText("Tổng tiền: " + order.getTotalAmount() + " VND");
             holder.txtOrderItems.setText("Món đã chọn: " + order.getItemsJson());
             holder.txtOrderDate.setText("Ngày đặt: " + formatDate(order.getTimestamp()));
+
+            if (order.isReviewed()) {
+                holder.tvStatus.setVisibility(View.VISIBLE);
+                holder.tvStatus.setClickable(false);
+            } else {
+                holder.tvStatus.setVisibility(View.GONE);
+            }
+
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), ReviewActivity.class);
+                intent.putExtra("orderId", order.getId());
+                v.getContext().startActivity(intent);
+            });
         }
 
         @Override
@@ -79,13 +93,14 @@ public class OrderHistoryActivity extends AppCompatActivity {
         }
 
         static class OrderViewHolder extends RecyclerView.ViewHolder {
-            TextView txtOrderDate, txtOrderItems, txtOrderTotal;
+            TextView txtOrderDate, txtOrderItems, txtOrderTotal, tvStatus;
 
             OrderViewHolder(View itemView) {
                 super(itemView);
                 txtOrderDate = itemView.findViewById(R.id.txtOrderDate);
                 txtOrderItems = itemView.findViewById(R.id.txtOrderItems);
                 txtOrderTotal = itemView.findViewById(R.id.txtOrderTotal);
+                tvStatus = itemView.findViewById(R.id.tvStatus);
             }
         }
 
