@@ -3,14 +3,12 @@ package com.example.vk_coffee;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vk_coffee.adapter.CoffeeAdapterAdmin;
@@ -40,8 +38,12 @@ public class AdminActivity extends AppCompatActivity {
 
         recyclerViewCoffeeAdmin = findViewById(R.id.recyclerViewCoffeeAdmin);
         coffeeList = new ArrayList<>();
+
+        // ✅ SỬA TỪ LinearLayoutManager -> GridLayoutManager (2 cột)
+        recyclerViewCoffeeAdmin.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerViewCoffeeAdmin.setHasFixedSize(true);
+
         adapter = new CoffeeAdapterAdmin(coffeeList, this::deleteCoffee, this::editCoffee);
-        recyclerViewCoffeeAdmin.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCoffeeAdmin.setAdapter(adapter);
 
         getCoffeeListFromDatabase();
@@ -62,7 +64,7 @@ public class AdminActivity extends AppCompatActivity {
                     }
                 });
 
-        // ✅ Xử lý BottomNavigationView thay cho FAB
+        // ✅ Xử lý BottomNavigationView
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavAdmin);
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();

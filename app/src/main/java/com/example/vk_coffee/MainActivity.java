@@ -2,12 +2,15 @@ package com.example.vk_coffee;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vk_coffee.adapter.CoffeeAdapter;
@@ -21,17 +24,13 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-
-
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewCoffee;
     private List<Coffee> cart = new ArrayList<>();
     private CoffeeAdapter coffeeAdapter;
     private ActivityResultLauncher<Intent> cartLauncher;
+    private List<Coffee> allCoffees = new ArrayList<>(); // Lưu toàn bộ danh sách gốc
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerViewCoffee = findViewById(R.id.recyclerViewCoffee);
+
+        // ✅ SỬA TỪ LinearLayoutManager → GridLayoutManager (2 cột)
+        recyclerViewCoffee.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerViewCoffee.setHasFixedSize(true);
 
         cartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -63,16 +66,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        recyclerViewCoffee.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCoffee.setAdapter(coffeeAdapter);
 
         getCoffeeListFromDatabase();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-
             if (id == R.id.nav_cart) {
                 com.example.vk_coffee.model.CartSingleton.getInstance().setCart(cart);
                 Intent cartIntent = new Intent(this, CartActivity.class);
@@ -94,9 +94,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        // ✅ Tìm kiếm
         EditText searchEditText = findViewById(R.id.searchEditText);
-
-// Gọi sau khi đã getCoffeeListFromDatabase() và gán coffeeAdapter
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -109,12 +108,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) { }
         });
-
     }
 
     private void getCoffeeListFromDatabase() {
         AppDatabase db = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase();
-
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             List<Coffee> coffees = db.coffeeDao().getAllCoffees();
@@ -126,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private List<Coffee> allCoffees = new ArrayList<>(); // Lưu toàn bộ danh sách gốc
-
     private void filterCoffeeList(String query) {
         List<Coffee> filteredList = new ArrayList<>();
         for (Coffee coffee : allCoffees) {
@@ -137,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
         }
         coffeeAdapter.updateCoffeeList(filteredList);
     }
-
 
     @Override
     protected void onResume() {
