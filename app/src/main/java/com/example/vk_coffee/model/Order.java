@@ -1,5 +1,6 @@
 package com.example.vk_coffee.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.Insert;
@@ -13,6 +14,8 @@ public class Order {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "isReviewed")
+    private boolean isReviewed;
     private String username;
     private String itemsJson;
     private int totalAmount;
@@ -23,6 +26,7 @@ public class Order {
         this.itemsJson = itemsJson;
         this.totalAmount = totalAmount;
         this.timestamp = timestamp;
+        this.isReviewed = isReviewed;
     }
 
     public int getId() { return id; }
@@ -39,4 +43,10 @@ public class Order {
 
     public long getTimestamp() { return timestamp; }
     public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
+    public boolean isReviewed() {
+        return isReviewed;
+    }
+    public void setReviewed(boolean reviewed) {
+        isReviewed = reviewed;
+    }
 }

@@ -18,6 +18,8 @@ public interface OrderDao {
 
     @Query("SELECT * FROM `Order` WHERE username = :username ORDER BY timestamp DESC")
     List<Order> getOrdersByUsername(String username);
+    @Query("UPDATE `Order` SET isReviewed = 1 WHERE id = :orderId")
+    void markOrderReviewed(int orderId);
 }
 
 
